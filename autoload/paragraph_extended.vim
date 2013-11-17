@@ -39,6 +39,7 @@ function! s:down_bridge_gap(cursor_column)
   endif
 endfunction
 
+" 'public' functions below
 function! paragraph_extended#Down(mode)
   norm! m'
   if a:mode ==# 'v'
