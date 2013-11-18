@@ -40,41 +40,50 @@ function! s:down_bridge_gap(cursor_column)
 endfunction
 
 " 'public' functions below
-function! paragraph_extended#Down(mode)
+function! paragraph_extended#Down(mode, count)
   norm! m'
   if a:mode ==# 'v'
     norm! gv
   endif
 
-  let cursor_column = col('.')
-  let total_lines   = line('$')
+  let i = 0
+  while i < a:count
+    let i += 1
+    let cursor_column = col('.')
+    let total_lines   = line('$')
 
-  " first line below is shorter than cursor column, 'bridge' the gap
-  if s:below_line_length() < cursor_column
-    call s:down_bridge_gap(cursor_column)
-  endif
+    " first line below is shorter than cursor column, 'bridge' the gap
+    if s:below_line_length() < cursor_column
+      call s:down_bridge_gap(cursor_column)
+    endif
 
-  " move to the bottom of the current paragraph
-  while line('.') < total_lines && s:below_line_length() >= cursor_column
-    execute 'norm j'
+    " move to the bottom of the current paragraph
+    while line('.') < total_lines && s:below_line_length() >= cursor_column
+      execute 'norm j'
+    endwhile
   endwhile
 endfunction
 
-function! paragraph_extended#Up(mode)
+function! paragraph_extended#Up(mode, count)
   norm! m'
   if a:mode ==# 'v'
     norm! gv
   endif
 
-  let cursor_column = col('.')
 
-  " first line above is shorter than cursor column, 'bridge' the gap
-  if s:above_line_length() < cursor_column
-    call s:up_bridge_gap(cursor_column)
-  endif
+  let i = 0
+  while i < a:count
+    let i += 1
+    let cursor_column = col('.')
 
-  " move to the top of the current paragraph
-  while line('.') > 1 && s:above_line_length() >= cursor_column
-    execute 'norm k'
+    " first line above is shorter than cursor column, 'bridge' the gap
+    if s:above_line_length() < cursor_column
+      call s:up_bridge_gap(cursor_column)
+    endif
+
+    " move to the top of the current paragraph
+    while line('.') > 1 && s:above_line_length() >= cursor_column
+      execute 'norm k'
+    endwhile
   endwhile
 endfunction

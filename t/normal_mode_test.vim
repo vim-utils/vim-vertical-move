@@ -18,12 +18,6 @@ describe 'paragraph-extended normal mode'
     Expect CharacterUnderCursor() == '3'
   end
 
-  it '<leader>[ jumps to the first line in current paragraph'
-    call PositionToString('6')
-    normal \[
-    Expect CharacterUnderCursor() == '5'
-  end
-
   it '<leader>] jumps over empty lines when invoked immediately near one'
     call PositionToString('3')
     normal \]
@@ -33,11 +27,45 @@ describe 'paragraph-extended normal mode'
     Expect CharacterUnderCursor() == '8'
   end
 
-  it '<leader>] jumps over empty lines when invoked immediately near one'
+  it '<leader>] takes a count'
+    normal ggg_
+    normal 1\]
+    Expect CharacterUnderCursor() == '3'
+
+    normal ggg_
+    normal 2\]
+    Expect CharacterUnderCursor() == '6'
+
+    normal ggg_
+    normal 3\]
+    Expect CharacterUnderCursor() == '8'
+  end
+
+  it '<leader>[ jumps to the first line in current paragraph'
+    call PositionToString('6')
+    normal \[
+    Expect CharacterUnderCursor() == '5'
+  end
+
+  it '<leader>[ jumps over empty lines when invoked immediately near one'
     call PositionToString('8')
     normal \[
     Expect CharacterUnderCursor() == '5'
     normal \[
+    Expect CharacterUnderCursor() == '1'
+  end
+
+  it '<leader>[ takes a count'
+    call PositionToString('10')
+    normal 1\[
+    Expect CharacterUnderCursor() == '8'
+
+    call PositionToString('10')
+    normal 2\[
+    Expect CharacterUnderCursor() == '5'
+
+    call PositionToString('10')
+    normal 3\[
     Expect CharacterUnderCursor() == '1'
   end
 
