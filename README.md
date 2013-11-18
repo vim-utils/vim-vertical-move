@@ -1,5 +1,7 @@
 # vim-paragraph-extended
 
+![Build Status](https://travis-ci.org/bruno-/vim-paragraph-extended.png?branch=master)
+
 Adds useful mappings `<leader>[` and `<leader>]` analogous to `{` and
 `}`. See animated gif for explanation (coming soon).
 
