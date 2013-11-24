@@ -21,7 +21,8 @@ Author: Bruno Sutic <https://www.github.com/bruno->
 |paragraph-extended-mappings|			Provided mappings
 |paragraph-extended-examples|			Detailed examples
 |paragraph-extended-changelog|			Changelog
-|paragraph-extended-about|			Link to project repo
+|paragraph-extended-about|			Why the plugin is created
+|paragraph-extended-contributing|		Development setup instructions
 |paragraph-extended-license|			MIT
 
 INTRODUCTION		*paragraph-extended* *paragraph-extended-introduction*
@@ -216,10 +217,43 @@ CHANGELOG					*paragraph-extended-changelog*
 
 ABOUT						*paragraph-extended-about*
 
+As mentioned in the examples and usage sections, this plugin is written from
+the desire to better handle text manipulation, especially in |visual-block|
+mode.
+The 'need' for this motion came repeatedly in my day-to-day work. After
+learning enough vim script, this plugin was born.
+
+CONTRIBUTING				 *paragraph-extended-contributing*
+
 Plugin repository is on github:
 	https://github.com/bruno-/vim-paragraph-extended
 
-Code contributions and patches are welcome.
+Development environment ~
+
+Paragraph extended has a test suite written in 'vspec'. 'vspec' itself depends
+on a ruby gem 'vim-flavor'. Here are the steps to run the specs locally.
+
+Clone the git repo
+	git clone https://github.com/bruno-/vim-paragraph-extended
+	cd vim-paragraph-extended
+
+Install the gems specified in Gemfile. This requires the bundler gem to be
+installed.
+	bundle install
+
+Run the specs with
+	bundle exec rake test
+
+You should see the test suite output with a message 'All tests successful'
+
+For more informaion about 'vspec' plugin, link to vimcast tutorial and other
+visit
+	https://github.com/kana/vim-vspec
+
+Contributing ~
+
+Code contributions and patches are welcome. If the patch contains a
+non-trivial update, please also write related tests.
 
 LICENSE						*paragraph-extended-license*
 

@@ -38,6 +38,14 @@ via [vundle](https://github.com/gmarik/vundle) or
 * Pathogen<br/>
 `git clone git://github.com/bruno-/vim-paragraph-extended.git ~/.vim/bundle/vim-paragraph-extended`
 
+### Contributing and development
+
+Patches are contributions are welcome. Since this plugin has a decent
+[vspec](https://github.com/kana/vim-vspec) test coverage, if your patch is
+non-trivial, providing tests in pull request is encouraged.
+
+For instructions how to run and write tests see `:h paragraph-extended-contributing`.
+
 ### License
 
 [MIT](LICENSE)
