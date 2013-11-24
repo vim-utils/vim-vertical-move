@@ -1,0 +1,228 @@
+*paragraph_extended.txt*        Motions that move across text paragraphs without
+                              changing the cursor position.
+
+Here's the obligatory ascii art:
+                                                           _       ~
+               _ __   __ _ _ __ __ _  __ _ _ __ __ _ _ __ | |__    ~
+              | '_ \ / _` | '__/ _` |/ _` | '__/ _` | '_ \| '_ \   ~
+              | |_) | (_| | | | (_| | (_| | | | (_| | |_) | | | |  ~
+              | .__/ \__,_|_|  \__,_|\__, |_|  \__,_| .__/|_| |_|  ~
+              |_|                    |___/          |_|            ~
+                              _                 _          _       ~
+                     _____  _| |_ ___ _ __   __| | ___  __| |      ~
+                    / _ \ \/ / __/ _ \ '_ \ / _` |/ _ \/ _` |      ~
+                   |  __/>  <| ||  __/ | | | (_| |  __/ (_| |      ~
+                    \___/_/\_\\__\___|_| |_|\__,_|\___|\__,_|      ~
+
+Author: Bruno Sutic <https://www.github.com/bruno->
+
+|paragraph-extended-introduction|		Short introduction
+|paragraph-extended-usage|			Useful usage example
+|paragraph-extended-mappings|			Provided mappings
+|paragraph-extended-examples|			Detailed examples
+|paragraph-extended-changelog|			Changelog
+|paragraph-extended-about|			Link to project repo
+|paragraph-extended-license|			MIT
+
+INTRODUCTION		*paragraph-extended* *paragraph-extended-introduction*
+
+This plugin adds extended paragraph motions to vim. They move the cursor 'up'
+or 'down' as many lines as possible without changing the cursor position.
+This is especially useful when manipulating text in visual-block mode.
+
+USAGE						*paragraph-extended-usage*
+
+Example presented here is also available as an animated gif on the project
+repository page
+	https://github.com/bruno-/vim-paragraph-extended
+
+Paragraph extended motions are really useful when manipulating text in visual
+block mode.
+A good example that shows this is presented below. Let's say you want to change
+the background image url for classes `img_01` to `img_05`.
+The cursor is represented as a pipe character `|`, currently in the first line.
+>
+	.img_01 { background-image: image-url('|service-1-sprite.png'); }
+	.img_02 { background-image: image-url('service-1-sprite.png'); }
+	.img_03 { background-image: image-url('service-1-sprite.png'); }
+	.img_04 { background-image: image-url('service-1-sprite.png'); }
+	.img_05 { background-image: image-url('service-1-sprite.png'); }
+
+	.img_06 { background-image: image-url('service-2-sprite.png'); }
+	.img_07 { background-image: image-url('service-2-sprite.png'); }
+<
+
+To accomplish the task, we want to visually select all 5 instances of text
+'service-1-sprite.png' with visual block mode and change it.
+
+Enter visual block mode with |<CTRL-V>| and press `<leader>-]`.
+Cursor will stay in the same text column and go down 4 lines, still in visual
+block mode.
+This differs from the `}` motion behavior, where the cursor would end up on the
+empty line below, which is not desirable in this context.
+>
+	.img_01 { background-image: image-url('service-1-sprite.png'); }
+	.img_02 { background-image: image-url('service-1-sprite.png'); }
+	.img_03 { background-image: image-url('service-1-sprite.png'); }
+	.img_04 { background-image: image-url('service-1-sprite.png'); }
+	.img_05 { background-image: image-url('|service-1-sprite.png'); }
+
+	.img_06 { background-image: image-url('service-2-sprite.png'); }
+	.img_07 { background-image: image-url('service-2-sprite.png'); }
+<
+
+The last command that will visually select text we want to update is `f'` which
+places a cursor at the end of 'service-1-sprite.png' string in line 5.
+Now it's easy to change the selected text, for example with `c` command (but we
+won't go further than that, since the point is illustrated).
+>
+	.img_01 { background-image: image-url('service-1-sprite.png'); }
+	.img_02 { background-image: image-url('service-1-sprite.png'); }
+	.img_03 { background-image: image-url('service-1-sprite.png'); }
+	.img_04 { background-image: image-url('service-1-sprite.png'); }
+	.img_05 { background-image: image-url('service-1-sprite.png|'); }
+
+	.img_06 { background-image: image-url('service-2-sprite.png'); }
+	.img_07 { background-image: image-url('service-2-sprite.png'); }
+<
+
+MAPPINGS					*paragraph-extended-mappings*
+
+Just 2 mappings are provided:
+						*paragraph-extended-up*
+[count]<leader>[		Moves 'up' as many lines as possible without
+				changing the cursor column.
+
+						*paragraph-extended-down*
+[count]<leader>]		Moves 'down' as many lines as possible. Also
+				doesn't change the cursor column.
+
+EXAMPLES					*paragraph-extended-examples*
+
+Paragraph extended is a bit hard to verbally explain so here are the
+step-by-step examples of how it works.
+
+They say a picture is worth a thousand words. Video then should be worth even
+more. There are animated gifs that show the behavior of this plugin on the
+projects github repository:
+	https://github.com/bruno-/vim-paragraph-extended
+
+Example 1: ~
+
+In the below example cursor is near the end of first line (marked with `|`).
+Lines contain a number at the beginning so they are easier referenced. Line 4
+is an empty line.
+>
+	1. Lorem ipsum dolor sit amet|,
+	2. consectetur adipisicing elit,
+	3. sed do eiusmod tempor incididunt
+
+	5. ut labore et dolore magna aliqua.
+	6. Ut enim ad minim veniam.
+<
+
+When `<leader>]` is pressed, cursor will go down as much lines as it can,
+without changing the cursor column. The new cursor position is in the last word
+of line 3 (see the `|` sign?). That position is exactly 2 characters below the
+position the cursor had in line 1. It is equivalent to pressing 'jj' two times
+in normal mode.
+Cursor won't go to the line 4, because it would be positioned in the column 1
+there (therefore, cursor column would be changed, and that can't happen).
+>
+	1. Lorem ipsum dolor sit amet,
+	2. consectetur adipisicing elit,
+	3. sed do eiusmod tempor inci|didunt
+
+	5. ut labore et dolore magna aliqua.
+	6. Ut enim ad minim veniam.
+<
+
+Notice this is similar to `}` motion. With `}`, cursor would end up on line 4
+(outside the paragraph), whereas with paragraph extended, cursor always stays
+within it.
+
+If `<leader>]` is pressed again, cursor will jump over the gap (empty line) and
+continue on line 5. It will stop just before the last word in line 5 (cursor
+indicated by `|` character) in the same text column as it was in the line 3 and
+in line 1 before that.
+Cursor won't go to line 6, because by doing that it would end up on a different
+text column (since line 6 is shorter than the current cursor position of line
+5).
+>
+	1. Lorem ipsum dolor sit amet,
+	2. consectetur adipisicing elit,
+	3. sed do eiusmod tempor incididunt
+
+	5. ut labore et dolore magna |aliqua.
+	6. Ut enim ad minim veniam.
+<
+
+By pressing the `<leader>[` now, cursor will now jump over the gap in the
+upward direction and go 'up' as much as possible without changing the text
+colum. You might have guessed it, it will end up in in the same spot as it was
+before, at the end of line 1.
+>
+	1. Lorem ipsum dolor sit amet|,
+	2. consectetur adipisicing elit,
+	3. sed do eiusmod tempor incididunt
+
+	5. ut labore et dolore magna aliqua.
+	6. Ut enim ad minim veniam.
+<
+
+Example 2: ~
+
+This example clarifies the behavior of this plugin when there's no empty line.
+As in the previous example, we start on line 1. Cursor is indicated by the `|`
+character.
+>
+	1. Lorem ipsum dolor sit amet|,
+	2. consectetur adipisicing elit,
+	3. sed do
+	4. eiusmod tempor incididunt ut labore
+	5. et dolore magna aliqua.
+<
+
+When `<leader>]` is pressed cursor goes just one line down. It won't go to line
+3 because by doing that, it would have to change text column.
+This example strives to emphasize that any line with fewer characters than
+current cursor position number is considered 'a gap'.
+>
+	1. Lorem ipsum dolor sit amet,
+	2. consectetur adipisicing el|it,
+	3. sed do
+	4. eiusmod tempor incididunt ut labore
+	5. et dolore magna aliqua.
+<
+
+If `<leader>]` is pressed again, since cursor is just next to 'the gap', it
+will jump it and end up in line 4.
+If `<leader>]` is pressed again, cursor won't move. This example file does not
+have line 6. If it moved down to line 5, it would change current text column,
+so that won't happen.
+>
+	1. Lorem ipsum dolor sit amet,
+	2. consectetur adipisicing elit,
+	3. sed do
+	4. eiusmod tempor incididunt |ut labore
+	5. et dolore magna aliqua.
+<
+CHANGELOG					*paragraph-extended-changelog*
+
+	v0.0.2:	November 24, 2013	* Added documentation
+	v0.0.1:	November 23, 2013	* Initial working version. Added
+					  animated gifs that show plugin
+					  behavior
+
+ABOUT						*paragraph-extended-about*
+
+Plugin repository is on github:
+	https://github.com/bruno-/vim-paragraph-extended
+
+Code contributions and patches are welcome.
+
+LICENSE						*paragraph-extended-license*
+
+Copyright (c) Bruno Sutic. Distributed under the MIT license.
+
+ vim:tw=78:ts=8:ft=help:norl:
