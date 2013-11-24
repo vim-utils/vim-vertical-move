@@ -1,11 +1,11 @@
-source t/helpers.vim
+source test/helpers.vim
 source plugin/paragraph_extended.vim
 
 describe 'paragraph-extended normal mode'
 
   before
     new
-    read t/fixture.txt
+    read test/fixture.txt
   end
 
   after
