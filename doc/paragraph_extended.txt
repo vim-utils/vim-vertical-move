@@ -20,9 +20,9 @@ Author: Bruno Sutic <https://www.github.com/bruno->
 |paragraph-extended-usage|			Useful usage example
 |paragraph-extended-mappings|			Provided mappings
 |paragraph-extended-examples|			Detailed examples
-|paragraph-extended-changelog|			Changelog
 |paragraph-extended-about|			Why the plugin is created
 |paragraph-extended-contributing|		Development setup instructions
+|paragraph-extended-changelog|			Changelog
 |paragraph-extended-license|			MIT
 
 INTRODUCTION		*paragraph-extended* *paragraph-extended-introduction*
@@ -208,13 +208,6 @@ so that won't happen.
 	4. eiusmod tempor incididunt |ut labore
 	5. et dolore magna aliqua.
 <
-CHANGELOG					*paragraph-extended-changelog*
-
-	v0.0.2:	November 24, 2013	* Added documentation
-	v0.0.1:	November 23, 2013	* Initial working version. Added
-					  animated gifs that show plugin
-					  behavior
-
 ABOUT						*paragraph-extended-about*
 
 As mentioned in the examples and usage sections, this plugin is written from
@@ -254,6 +247,15 @@ Contributing ~
 
 Code contributions and patches are welcome. If the patch contains a
 non-trivial update, please also write related tests.
+
+CHANGELOG					*paragraph-extended-changelog*
+
+	v0.0.3:	November 24, 2013	* Add operator pending mappings and
+					  specs for them
+	v0.0.2:	November 24, 2013	* Added documentation
+	v0.0.1:	November 23, 2013	* Initial working version. Added
+					  animated gifs that show plugin
+					  behavior
 
 LICENSE						*paragraph-extended-license*
 

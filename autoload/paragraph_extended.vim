@@ -39,6 +39,19 @@ function! s:down_bridge_gap(cursor_column)
   endif
 endfunction
 
+" operator pending functions
+function! paragraph_extended#PendingDown(count)
+  " norm 'resets' the visual mode
+  norm v
+  call paragraph_extended#Down('v', a:count)
+endfunction
+
+function! paragraph_extended#PendingUp(count)
+  " norm 'resets' the visual mode
+  norm v
+  call paragraph_extended#Up('v', a:count)
+endfunction
+
 " 'public' functions below
 function! paragraph_extended#Down(mode, count)
   norm! m'
