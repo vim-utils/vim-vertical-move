@@ -1,7 +1,7 @@
 source test/helpers.vim
-source plugin/paragraph_extended.vim
+source plugin/vertical_move.vim
 
-describe 'paragraph-extended normal mode'
+describe 'vertical-move normal mode'
 
   before
     new

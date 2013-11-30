@@ -1,7 +1,7 @@
 source test/helpers.vim
-source plugin/paragraph_extended.vim
+source plugin/vertical_move.vim
 
-describe 'paragraph-extended operator pending mappings'
+describe 'vertical-move operator pending mappings'
 
   before
     new

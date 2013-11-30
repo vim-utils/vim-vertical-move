@@ -1,44 +1,44 @@
-*paragraph_extended.txt*        Motions that move across text paragraphs without
-                              changing the cursor position.
+*vertical_move.txt*        Motions that move a cursor 'up' or 'down' as many
+                         lines as possible without changing the cursor column.
+                         With these motions - cursor always stays in the same
+                         column.
 
 Here's the obligatory ascii art:
-                                                           _       ~
-               _ __   __ _ _ __ __ _  __ _ _ __ __ _ _ __ | |__    ~
-              | '_ \ / _` | '__/ _` |/ _` | '__/ _` | '_ \| '_ \   ~
-              | |_) | (_| | | | (_| | (_| | | | (_| | |_) | | | |  ~
-              | .__/ \__,_|_|  \__,_|\__, |_|  \__,_| .__/|_| |_|  ~
-              |_|                    |___/          |_|            ~
-                              _                 _          _       ~
-                     _____  _| |_ ___ _ __   __| | ___  __| |      ~
-                    / _ \ \/ / __/ _ \ '_ \ / _` |/ _ \/ _` |      ~
-                   |  __/>  <| ||  __/ | | | (_| |  __/ (_| |      ~
-                    \___/_/\_\\__\___|_| |_|\__,_|\___|\__,_|      ~
+                         _   _           _                              ~
+         __   _____ _ __| |_(_) ___ __ _| |   _ __ ___   _____   _____  ~
+         \ \ / / _ \ '__| __| |/ __/ _` | |  | '_ ` _ \ / _ \ \ / / _ \ ~
+          \ V /  __/ |  | |_| | (_| (_| | |  | | | | | | (_) \ V /  __/ ~
+           \_/ \___|_|   \__|_|\___\__,_|_|  |_| |_| |_|\___/ \_/ \___| ~
+
 
 Author: Bruno Sutic <https://www.github.com/bruno->
 
-|paragraph-extended-introduction|		Short introduction
-|paragraph-extended-usage|			Useful usage example
-|paragraph-extended-mappings|			Provided mappings
-|paragraph-extended-examples|			Detailed examples
-|paragraph-extended-about|			Why the plugin is created
-|paragraph-extended-contributing|		Development setup instructions
-|paragraph-extended-changelog|			Changelog
-|paragraph-extended-license|			MIT
+|vertical-move-introduction|			Short introduction
+|vertical-move-usage|				Useful usage example
+|vertical-move-mappings|			Provided mappings
+|vertical-move-examples|			Detailed examples
+|vertical-move-about|				Why the plugin is created
+|vertical-move-contributing|			Development setup instructions
+|vertical-move-changelog|			Changelog
+|vertical-move-license|				MIT
 
-INTRODUCTION		*paragraph-extended* *paragraph-extended-introduction*
 
-This plugin adds extended paragraph motions to vim. They move the cursor 'up'
-or 'down' as many lines as possible without changing the cursor position.
+INTRODUCTION			*vertical-move* *vertical-move-introduction*
+
+This plugin adds vertical move motions to vim. They move the cursor 'up' or
+'down' as many lines as possible without changing the cursor column position.
+With these motions - cursor always stays in the same column!
 This is especially useful when manipulating text in visual-block mode.
 
-USAGE						*paragraph-extended-usage*
+
+USAGE							*vertical-move-usage*
 
 Example presented here is also available as an animated gif on the project
 repository page
-	https://github.com/bruno-/vim-paragraph-extended
+	https://github.com/bruno-/vim-vertical-move
 
-Paragraph extended motions are really useful when manipulating text in visual
-block mode.
+Vertical move motions are really useful when manipulating text in visual block
+mode.
 A good example that shows this is presented below. Let's say you want to change
 the background image url for classes `img_01` to `img_05`.
 The cursor is represented as a pipe character `|`, currently in the first line.
@@ -59,8 +59,9 @@ To accomplish the task, we want to visually select all 5 instances of text
 Enter visual block mode with |<CTRL-V>| and press `<leader>-]`.
 Cursor will stay in the same text column and go down 4 lines, still in visual
 block mode.
-This differs from the `}` motion behavior, where the cursor would end up on the
-empty line below, which is not desirable in this context.
+This is similar but different from the `}` motion behavior, where the cursor
+would end up on the empty line below (in the first column), which is not
+desirable in this context.
 >
 	.img_01 { background-image: image-url('service-1-sprite.png'); }
 	.img_02 { background-image: image-url('service-1-sprite.png'); }
@@ -87,26 +88,26 @@ won't go further than that, since the point is illustrated).
 	.img_07 { background-image: image-url('service-2-sprite.png'); }
 <
 
-MAPPINGS					*paragraph-extended-mappings*
+MAPPINGS						*vertical-move-mappings*
 
 Just 2 mappings are provided:
-						*paragraph-extended-up*
+							*vertical-move-up*
 [count]<leader>[		Moves 'up' as many lines as possible without
 				changing the cursor column.
 
-						*paragraph-extended-down*
+							*vertical-move-down*
 [count]<leader>]		Moves 'down' as many lines as possible. Also
 				doesn't change the cursor column.
 
-EXAMPLES					*paragraph-extended-examples*
+EXAMPLES						*vertical-move-examples*
 
-Paragraph extended is a bit hard to verbally explain so here are the
-step-by-step examples of how it works.
+This plugin is little bit hard to verbally explain so here are the step-by-step
+examples of how it works.
 
 They say a picture is worth a thousand words. Video then should be worth even
 more. There are animated gifs that show the behavior of this plugin on the
-projects github repository:
-	https://github.com/bruno-/vim-paragraph-extended
+project's github repository:
+	https://github.com/bruno-/vim-vertical-move
 
 Example 1: ~
 
@@ -122,13 +123,14 @@ is an empty line.
 	6. Ut enim ad minim veniam.
 <
 
-When `<leader>]` is pressed, cursor will go down as much lines as it can,
+When `<leader>]` is pressed, cursor will go down as many lines as it can,
 without changing the cursor column. The new cursor position is in the last word
 of line 3 (see the `|` sign?). That position is exactly 2 characters below the
 position the cursor had in line 1. It is equivalent to pressing 'jj' two times
 in normal mode.
-Cursor won't go to the line 4, because it would be positioned in the column 1
-there (therefore, cursor column would be changed, and that can't happen).
+Cursor won't go to the line 4, because it would automatically be positioned in
+the column 1 there. That would violate the requirement of this plugin:
+"cursor always stays in the same column".
 >
 	1. Lorem ipsum dolor sit amet,
 	2. consectetur adipisicing elit,
@@ -139,16 +141,16 @@ there (therefore, cursor column would be changed, and that can't happen).
 <
 
 Notice this is similar to `}` motion. With `}`, cursor would end up on line 4
-(outside the paragraph), whereas with paragraph extended, cursor always stays
+(outside the paragraph), whereas with vertical-move, cursor always stays
 within it.
 
 If `<leader>]` is pressed again, cursor will jump over the gap (empty line) and
 continue on line 5. It will stop just before the last word in line 5 (cursor
 indicated by `|` character) in the same text column as it was in the line 3 and
 in line 1 before that.
-Cursor won't go to line 6, because by doing that it would end up on a different
-text column (since line 6 is shorter than the current cursor position of line
-5).
+Cursor won't go to line 6, because by doing that it would automatically be
+placed in a different text column (since line 6 is shorter than the current
+cursor position in line 5).
 >
 	1. Lorem ipsum dolor sit amet,
 	2. consectetur adipisicing elit,
@@ -158,10 +160,10 @@ text column (since line 6 is shorter than the current cursor position of line
 	6. Ut enim ad minim veniam.
 <
 
-By pressing the `<leader>[` now, cursor will now jump over the gap in the
-upward direction and go 'up' as much as possible without changing the text
-colum. You might have guessed it, it will end up in in the same spot as it was
-before, at the end of line 1.
+By pressing the `<leader>[`, cursor will now jump over the gap in the upward
+direction and go 'up' as much as possible without changing the text colum. You
+might have guessed it, it will end up in in the same spot as it was before, at
+the end of line 1.
 >
 	1. Lorem ipsum dolor sit amet|,
 	2. consectetur adipisicing elit,
@@ -184,8 +186,8 @@ character.
 	5. et dolore magna aliqua.
 <
 
-When `<leader>]` is pressed cursor goes just one line down. It won't go to line
-3 because by doing that, it would have to change text column.
+When `<leader>]` is pressed, cursor goes down just one line. It won't go to line
+3 because by doing that, it would automatically change text column.
 This example strives to emphasize that any line with fewer characters than
 current cursor position number is considered 'a gap'.
 >
@@ -197,7 +199,7 @@ current cursor position number is considered 'a gap'.
 <
 
 If `<leader>]` is pressed again, since cursor is just next to 'the gap', it
-will jump it and end up in line 4.
+will jump over it and end up in line 4.
 If `<leader>]` is pressed again, cursor won't move. This example file does not
 have line 6. If it moved down to line 5, it would change current text column,
 so that won't happen.
@@ -208,27 +210,27 @@ so that won't happen.
 	4. eiusmod tempor incididunt |ut labore
 	5. et dolore magna aliqua.
 <
-ABOUT						*paragraph-extended-about*
+ABOUT							*vertical-move-about*
 
 As mentioned in the examples and usage sections, this plugin is written from
 the desire to better handle text manipulation, especially in |visual-block|
 mode.
-The 'need' for this motion came repeatedly in my day-to-day work. After
+The 'need' for this motion came repeatedly in author's day-to-day work. After
 learning enough vim script, this plugin was born.
 
-CONTRIBUTING				 *paragraph-extended-contributing*
+CONTRIBUTING					 *vertical-move-contributing*
 
 Plugin repository is on github:
-	https://github.com/bruno-/vim-paragraph-extended
+	https://github.com/bruno-/vim-vertical-move
 
 Development environment ~
 
-Paragraph extended has a test suite written in 'vspec'. 'vspec' itself depends
+This plugin has a test suite written in 'vspec'. 'vspec' itself depends
 on a ruby gem 'vim-flavor'. Here are the steps to run the specs locally.
 
 Clone the git repo
-	git clone https://github.com/bruno-/vim-paragraph-extended
-	cd vim-paragraph-extended
+	git clone https://github.com/bruno-/vim-vertical-move
+	cd vim-vertical-move
 
 Install the gems specified in Gemfile. This requires the bundler gem to be
 installed.
@@ -248,8 +250,9 @@ Contributing ~
 Code contributions and patches are welcome. If the patch contains a
 non-trivial update, please also write related tests.
 
-CHANGELOG					*paragraph-extended-changelog*
+CHANGELOG						*vertical-move-changelog*
 
+	v0.0.4:	November 30, 2013	* Change name to vim-vertical-move
 	v0.0.3:	November 24, 2013	* Add operator pending mappings and
 					  specs for them
 	v0.0.2:	November 24, 2013	* Added documentation
@@ -257,7 +260,7 @@ CHANGELOG					*paragraph-extended-changelog*
 					  animated gifs that show plugin
 					  behavior
 
-LICENSE						*paragraph-extended-license*
+LICENSE							*vertical-move-license*
 
 Copyright (c) Bruno Sutic. Distributed under the MIT license.
 

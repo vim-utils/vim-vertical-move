@@ -40,20 +40,20 @@ function! s:down_bridge_gap(cursor_column)
 endfunction
 
 " operator pending functions
-function! paragraph_extended#PendingDown(count)
+function! vertical_move#PendingDown(count)
   " norm 'resets' the visual mode
   norm v
-  call paragraph_extended#Down('v', a:count)
+  call vertical_move#Down('v', a:count)
 endfunction
 
-function! paragraph_extended#PendingUp(count)
+function! vertical_move#PendingUp(count)
   " norm 'resets' the visual mode
   norm v
-  call paragraph_extended#Up('v', a:count)
+  call vertical_move#Up('v', a:count)
 endfunction
 
 " 'public' functions below
-function! paragraph_extended#Down(mode, count)
+function! vertical_move#Down(mode, count)
   norm! m'
   if a:mode ==# 'v'
     norm! gv
@@ -77,7 +77,7 @@ function! paragraph_extended#Down(mode, count)
   endwhile
 endfunction
 
-function! paragraph_extended#Up(mode, count)
+function! vertical_move#Up(mode, count)
   norm! m'
   if a:mode ==# 'v'
     norm! gv

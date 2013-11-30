@@ -1,12 +1,13 @@
-# vim-paragraph-extended
+# vim-vertical-move
 
-![Build Status](https://travis-ci.org/bruno-/vim-paragraph-extended.png?branch=master)
+![Build Status](https://travis-ci.org/bruno-/vim-vertical-move.png?branch=master)
 
-Adds paragraph extended motions to vim. These move a cursor 'up' or 'down' as
-many lines as possible **without changing the cursor position**. These are
-especially useful in visual-block mode.
+Adds vertical move motions to vim. These move a cursor 'up' or 'down' as many
+lines as possible **without changing the cursor column**. With these motions -
+cursor **always** stays in the same column! These are especially useful in
+ visual-block mode.
 
-Paragraph extended is a bit hard to verbally explain, so be sure to check the
+These motions are a bit hard to verbally explain, so be sure to check the
 animated examples below.
 
 ### Added motions
@@ -18,13 +19,13 @@ animated examples below.
 
 ### Examples
 
-* Selecting a block of text with paragraph movements. Notice how the cursor
-  position is lost when using the original paragraph motion `}`.
-  ![original paragraph motion example](/examples/block_select_without_paragraph_extended_motion.gif)
+* Selecting a block of text with vertical movements. Notice how the **cursor
+  column position is lost** when using the original paragraph motion `}`.
+  ![original paragraph motion example](/examples/block_select_original_paragraph_motion.gif)
 
-* By using `<leader>]`, the cursor moves 'down' as much as it cans, without
-  changing the cursor column.
-  ![paragraph extended motion example](/examples/paragraph_extended_block_operation.gif)
+* By using `<leader>]`, the cursor moves 'down' as many lines as possible,
+  **without changing the cursor column.
+  ![vertical move motion example](/examples/vertical_move_block_operation.gif)
 
 ### Installation
 
@@ -33,10 +34,10 @@ via [vundle](https://github.com/gmarik/vundle) or
 [pathogen](https://github.com/tpope/vim-pathogen).
 
 * Vundle<br/>
-`Bundle 'bruno-/vim-paragraph-extended'`
+`Bundle 'bruno-/vim-vertical-move`
 
 * Pathogen<br/>
-`git clone git://github.com/bruno-/vim-paragraph-extended.git ~/.vim/bundle/vim-paragraph-extended`
+`git clone git://github.com/bruno-/vim-vertical-move.git ~/.vim/bundle/vim-vertical-move`
 
 ### Contributing and development
 
@@ -44,7 +45,7 @@ Patches are contributions are welcome. Since this plugin has a decent
 [vspec](https://github.com/kana/vim-vspec) test coverage, if your patch is
 non-trivial, providing tests in pull request is encouraged.
 
-For instructions how to run and write tests see `:h paragraph-extended-contributing`.
+For instructions how to run and write tests see `:h vertical-move-contributing`.
 
 ### License
 

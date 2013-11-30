@@ -1,7 +1,7 @@
 source test/helpers.vim
-source plugin/paragraph_extended.vim
+source plugin/vertical_move.vim
 
-describe 'paragraph-extended visual block mode'
+describe 'vertical-move visual block mode'
 
   before
     new
