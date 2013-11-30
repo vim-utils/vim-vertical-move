@@ -19,12 +19,13 @@ animated examples below.
 
 ### Examples
 
-* Selecting a block of text with vertical movements. Notice how the **cursor
-  column position is lost** when using the original paragraph motion `}`.
+* **Problem scenario** selecting a block of text with vertical movements with
+  vanilla vim (vim-vertical-move not installed). Notice how the **cursor column
+  position is lost** when using the original paragraph motion `}`.<br/>
   ![original paragraph motion example](/examples/block_select_original_paragraph_motion.gif)
 
-* By using `<leader>]`, the cursor moves 'down' as many lines as possible,
-  **without changing the cursor column.
+* **Solution using vim-vertical-move**: pressing `<leader>]` the cursor moves
+  'down' as many lines as possible, **without changing the cursor column**.<br/>
   ![vertical move motion example](/examples/vertical_move_block_operation.gif)
 
 ### Installation
