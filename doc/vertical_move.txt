@@ -90,7 +90,7 @@ won't go further than that, since the point is illustrated).
 
 MAPPINGS						*vertical-move-mappings*
 
-Just 2 mappings are provided:
+Just 2 mappings are provided by default:
 							*vertical-move-up*
 [count]<leader>[		Moves 'up' as many lines as possible without
 				changing the cursor column.
@@ -98,6 +98,17 @@ Just 2 mappings are provided:
 							*vertical-move-down*
 [count]<leader>]		Moves 'down' as many lines as possible. Also
 				doesn't change the cursor column.
+
+						*g:vertical_move_default_mapping*
+You can remap these mappins to your liking. Here's the example how to remap
+the vertical move motions to `<leader>j` and `<leader>k` in your .vimrc:
+>
+	let g:vertical_move_default_mapping = 0
+	nmap <silent> <leader>j <Plug>(vertical_move_down)
+	nmap <silent> <leader>k <Plug>(vertical_move_up)
+	xmap <silent> <leader>j <Plug>(vertical_move_down)
+	xmap <silent> <leader>k <Plug>(vertical_move_up)
+<
 
 EXAMPLES						*vertical-move-examples*
 
@@ -210,6 +221,7 @@ so that won't happen.
 	4. eiusmod tempor incididunt |ut labore
 	5. et dolore magna aliqua.
 <
+
 ABOUT							*vertical-move-about*
 
 As mentioned in the examples and usage sections, this plugin is written from
@@ -217,6 +229,7 @@ the desire to better handle text manipulation, especially in |visual-block|
 mode.
 The 'need' for this motion came repeatedly in author's day-to-day work. After
 learning enough vim script, this plugin was born.
+
 
 CONTRIBUTING					 *vertical-move-contributing*
 
@@ -250,8 +263,16 @@ Contributing ~
 Code contributions and patches are welcome. If the patch contains a
 non-trivial update, please also write related tests.
 
+Contributors ~
+
+A list of code contributors:
+	itchyny (https://github.com/itchyny)
+
+
 CHANGELOG						*vertical-move-changelog*
 
+	v1.0.0:	December 5, 2013	* @itchyny enables configurable
+					  mappings.
 	v0.0.4:	November 30, 2013	* Change name to vim-vertical-move
 	v0.0.3:	November 24, 2013	* Add operator pending mappings and
 					  specs for them
@@ -259,6 +280,7 @@ CHANGELOG						*vertical-move-changelog*
 	v0.0.1:	November 23, 2013	* Initial working version. Added
 					  animated gifs that show plugin
 					  behavior
+
 
 LICENSE							*vertical-move-license*
 
