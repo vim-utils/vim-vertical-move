@@ -20,7 +20,7 @@ function! s:up_bridge_gap(cursor_column)
   endwhile
 
   if move_count > 1 && s:line_length(next_line) >= a:cursor_column
-    execute 'norm '.move_count.'k'
+    execute 'norm! '.move_count.'k'
   endif
 endfunction
 
@@ -35,20 +35,20 @@ function! s:down_bridge_gap(cursor_column)
   endwhile
 
   if move_count > 1 && s:line_length(next_line) >= a:cursor_column
-    execute 'norm '.move_count.'j'
+    execute 'norm! '.move_count.'j'
   endif
 endfunction
 
 " operator pending functions
 function! vertical_move#PendingDown(count)
-  " norm 'resets' the visual mode
-  norm v
+  " norm! 'resets' the visual mode
+  norm! v
   call vertical_move#Down('v', a:count)
 endfunction
 
 function! vertical_move#PendingUp(count)
-  " norm 'resets' the visual mode
-  norm v
+  " norm! 'resets' the visual mode
+  norm! v
   call vertical_move#Up('v', a:count)
 endfunction
 
@@ -72,7 +72,7 @@ function! vertical_move#Down(mode, count)
 
     " move to the bottom of the current paragraph
     while line('.') < total_lines && s:below_line_length() >= cursor_column
-      execute 'norm j'
+      execute 'norm! j'
     endwhile
   endwhile
 endfunction
@@ -96,7 +96,7 @@ function! vertical_move#Up(mode, count)
 
     " move to the top of the current paragraph
     while line('.') > 1 && s:above_line_length() >= cursor_column
-      execute 'norm k'
+      execute 'norm! k'
     endwhile
   endwhile
 endfunction

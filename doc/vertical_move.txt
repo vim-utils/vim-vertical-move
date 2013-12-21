@@ -271,6 +271,8 @@ A list of code contributors:
 
 CHANGELOG						*vertical-move-changelog*
 
+	v1.0.1:	December 21, 2013	* Always use 'norm!' - fixes bug with
+					  wrapped lines
 	v1.0.0:	December 5, 2013	* @itchyny enables configurable
 					  mappings.
 	v0.0.4:	November 30, 2013	* Change name to vim-vertical-move
