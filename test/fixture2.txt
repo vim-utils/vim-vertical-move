@@ -1,0 +1,9 @@
+class Foo:
+    def on_request(self, message):
+        pass
+    def respond(self):
+        pass
+
+class Bar(Foo):
+    def on_request(self, message):
+    def respond(self):
