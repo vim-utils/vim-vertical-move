@@ -56,7 +56,7 @@ The cursor is represented as a pipe character `|`, currently in the first line.
 To accomplish the task, we want to visually select all 5 instances of text
 'service-1-sprite.png' with visual block mode and change it.
 
-Enter visual block mode with |<CTRL-V>| and press `<leader>-]`.
+Enter visual block mode with |<CTRL-V>| and press `]v`.
 Cursor will stay in the same text column and go down 4 lines, still in visual
 block mode.
 This is similar but different from the `}` motion behavior, where the cursor
@@ -92,11 +92,11 @@ MAPPINGS						*vertical-move-mappings*
 
 Just 2 mappings are provided by default:
 							*vertical-move-up*
-[count]<leader>[		Moves 'up' as many lines as possible without
+[count] [v			Moves 'up' as many lines as possible without
 				changing the cursor column.
 
 							*vertical-move-down*
-[count]<leader>]		Moves 'down' as many lines as possible. Also
+[count] ]v			Moves 'down' as many lines as possible. Also
 				doesn't change the cursor column.
 
 						*g:vertical_move_default_mapping*
@@ -134,9 +134,9 @@ is an empty line.
 	6. Ut enim ad minim veniam.
 <
 
-When `<leader>]` is pressed, cursor will go down as many lines as it can,
-without changing the cursor column. The new cursor position is in the last word
-of line 3 (see the `|` sign?). That position is exactly 2 characters below the
+When `]v` is pressed, cursor will go down as many lines as it can, without
+changing the cursor column. The new cursor position is in the last word of
+line 3 (see the `|` sign?). That position is exactly 2 characters below the
 position the cursor had in line 1. It is equivalent to pressing 'jj' two times
 in normal mode.
 Cursor won't go to the line 4, because it would automatically be positioned in
@@ -155,10 +155,10 @@ Notice this is similar to `}` motion. With `}`, cursor would end up on line 4
 (outside the paragraph), whereas with vertical-move, cursor always stays
 within it.
 
-If `<leader>]` is pressed again, cursor will jump over the gap (empty line) and
+If `]v` is pressed again, cursor will jump over the gap (empty line) and
 continue on line 5. It will stop just before the last word in line 5 (cursor
-indicated by `|` character) in the same text column as it was in the line 3 and
-in line 1 before that.
+indicated by `|` character) in the same text column as it was in the line 3
+and in line 1 before that.
 Cursor won't go to line 6, because by doing that it would automatically be
 placed in a different text column (since line 6 is shorter than the current
 cursor position in line 5).
@@ -171,7 +171,7 @@ cursor position in line 5).
 	6. Ut enim ad minim veniam.
 <
 
-By pressing the `<leader>[`, cursor will now jump over the gap in the upward
+By pressing the `[v`, cursor will now jump over the gap in the upward
 direction and go 'up' as much as possible without changing the text colum. You
 might have guessed it, it will end up in in the same spot as it was before, at
 the end of line 1.
@@ -197,8 +197,8 @@ character.
 	5. et dolore magna aliqua.
 <
 
-When `<leader>]` is pressed, cursor goes down just one line. It won't go to line
-3 because by doing that, it would automatically change text column.
+When `]v` is pressed, cursor goes down just one line. It won't go to line 3
+because by doing that, it would automatically change text column.
 This example strives to emphasize that any line with fewer characters than
 current cursor position number is considered 'a gap'.
 >
@@ -209,11 +209,11 @@ current cursor position number is considered 'a gap'.
 	5. et dolore magna aliqua.
 <
 
-If `<leader>]` is pressed again, since cursor is just next to 'the gap', it
-will jump over it and end up in line 4.
-If `<leader>]` is pressed again, cursor won't move. This example file does not
-have line 6. If it moved down to line 5, it would change current text column,
-so that won't happen.
+If `]v` is pressed again, since cursor is just next to 'the gap', it will jump
+over it and end up in line 4.
+If `]v` is pressed again, cursor won't move. This example file does not have
+line 6. If it moved down to line 5, it would change current text column, so
+that won't happen.
 >
 	1. Lorem ipsum dolor sit amet,
 	2. consectetur adipisicing elit,
@@ -271,6 +271,9 @@ A list of code contributors:
 
 CHANGELOG						*vertical-move-changelog*
 
+	v2.0.0:	February 2, 2013	* Change default mappings to ]v and [v
+					  because 'leader mappings are lame'
+					  (http://lanyrd.com/2014/vimlondon/scwggw/)
 	v1.0.1:	December 21, 2013	* Always use 'norm!' - fixes bug with
 					  wrapped lines
 	v1.0.0:	December 5, 2013	* @itchyny enables configurable

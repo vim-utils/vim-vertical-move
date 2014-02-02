@@ -12,17 +12,17 @@ describe 'vertical-move visual block mode'
     close!
   end
 
-  it '<leader>] works with deletion'
+  it ']v works with deletion'
     normal gg$
-    exe "normal \<C-V>\\]rx"
+    exe "normal \<C-V>]vrx"
     Expect getline(1) == 'line x'
     Expect getline(2) == 'line x'
     Expect getline(3) == 'line x'
   end
 
-  it '<leader>] skips gaps'
+  it ']v skips gaps'
     normal gg$
-    exe "normal \<C-V>\\]\\]rx"
+    exe "normal \<C-V>]v]vrx"
     Expect getline(1) == 'line x'
     Expect getline(2) == 'line x'
     Expect getline(3) == 'line x'
@@ -31,17 +31,17 @@ describe 'vertical-move visual block mode'
     Expect getline(6) == 'line x'
   end
 
-  it '<leader>[ works with deletion'
+  it '[v works with deletion'
     call PositionToString('3')
-    exe "normal \<C-V>\\[rx"
+    exe "normal \<C-V>[vrx"
     Expect getline(1) == 'line x'
     Expect getline(2) == 'line x'
     Expect getline(3) == 'line x'
   end
 
-  it '<leader>[ skips gaps'
+  it '[v skips gaps'
     call PositionToString('6')
-    exe "normal \<C-V>\\[\\[rx"
+    exe "normal \<C-V>[v[vrx"
     Expect getline(1) == 'line x'
     Expect getline(2) == 'line x'
     Expect getline(3) == 'line x'

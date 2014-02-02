@@ -12,9 +12,14 @@ animated examples below.
 
 ### Added motions
 
-* `<leader>[` - moves 'up' as many lines as possible without changing the
+**Update: version 2-0-0 updated default mappings**. Previously they were
+`<leader>[` and `<leader>]`, but since
+[vim leader mappings are lame](http://lanyrd.com/2014/vimlondon/scwggw/), they
+are updated to the new defaults.
+
+* `[v` - moves 'up' as many lines as possible without changing the
   cursor column
-* `<leader>]` - moves 'down' as many lines as possible. Also doesn't change
+* `]v` - moves 'down' as many lines as possible. Also doesn't change
   the cursor column
 
 ### Examples
@@ -24,7 +29,7 @@ animated examples below.
   position is lost** when using the original paragraph motion `}`.<br/>
   ![original paragraph motion example](/examples/block_select_original_paragraph_motion.gif)
 
-* **Solution using vim-vertical-move**: pressing `<leader>]` the cursor moves
+* **Solution using vim-vertical-move**: pressing `]v` the cursor moves
   'down' as many lines as possible, **without changing the cursor column**.<br/>
   ![vertical move motion example](/examples/vertical_move_block_operation.gif)
 
@@ -51,4 +56,3 @@ For instructions how to run and write tests see `:h vertical-move-contributing`.
 ### License
 
 [MIT](LICENSE)
-

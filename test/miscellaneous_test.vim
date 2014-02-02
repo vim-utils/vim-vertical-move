@@ -12,33 +12,33 @@ describe 'vertical-move miscellaneous'
     close!
   end
 
-  it '<leader>] does not change the current search string'
+  it ']v does not change the current search string'
     normal gg_
     " do a search and check cursor position
     exe "normal /Foo\<CR>"
     Expect line('.') == 1
     Expect col('.') == 7
     " do vim-vertical-move motion
-    exe "normal \\]"
+    exe "normal ]v"
     Expect line('.') == 5
     Expect col('.') == 7
-    " performing the same search as before hitting <leader>]
+    " performing the same search as before hitting ]v
     exe "normal /\<CR>"
     Expect line('.') == 7
     Expect col('.') == 7
   end
 
-  it '<leader>] does not change the current search string'
+  it ']v does not change the current search string'
     normal gg_
     " do a search and check cursor position
     exe "normal /Bar\<CR>"
     Expect line('.') == 7
     Expect col('.') == 7
     " make vim-vertical-move motion
-    exe "normal \\["
+    exe "normal [v"
     Expect line('.') == 1
     Expect col('.') == 7
-    " performing the same search as before hitting <leader>[
+    " performing the same search as before hitting [v
     exe "normal /\<CR>"
     Expect line('.') == 7
     Expect col('.') == 7

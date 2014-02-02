@@ -23,12 +23,12 @@ onoremap <silent> <Plug>(vertical_move_down) :<C-U>call vertical_move#PendingDow
 onoremap <silent> <Plug>(vertical_move_up) :<C-U>call vertical_move#PendingUp(v:count1)<CR>
 
 if get(g:, 'vertical_move_default_mapping', 1)
-  nmap <silent> <leader>] <Plug>(vertical_move_down)
-  nmap <silent> <leader>[ <Plug>(vertical_move_up)
-  xmap <silent> <leader>] <Plug>(vertical_move_down)
-  xmap <silent> <leader>[ <Plug>(vertical_move_up)
-  omap <silent> <leader>] <Plug>(vertical_move_down)
-  omap <silent> <leader>[ <Plug>(vertical_move_up)
+  nmap <silent> ]v <Plug>(vertical_move_down)
+  nmap <silent> [v <Plug>(vertical_move_up)
+  xmap <silent> ]v <Plug>(vertical_move_down)
+  xmap <silent> [v <Plug>(vertical_move_up)
+  omap <silent> ]v <Plug>(vertical_move_down)
+  omap <silent> [v <Plug>(vertical_move_up)
 endif
 
 let &cpo = s:save_cpo
