@@ -1,10 +1,3 @@
-" ============================================================================
-" File: vertical_move.vim
-" Author: bruno-
-" Version: 1.0.0
-" WebPage: https://github.com/bruno-/vim-vertical-move
-" ============================================================================
-
 if exists('g:loaded_vertical_move') && g:loaded_vertical_move
   finish
 endif
