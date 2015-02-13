@@ -261,7 +261,7 @@ visit
 Contributing ~
 
 Code contributions and patches are welcome. If the patch contains a
-non-trivial update, please also write related tests.
+non-trivial update, please also write tests for it.
 
 Contributors ~
 
