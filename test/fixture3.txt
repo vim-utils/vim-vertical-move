@@ -1,0 +1,5 @@
+	linex1
+line 2
+line 3y
+
+" vim:set ts=2:
