@@ -25,7 +25,7 @@ describe 'vertical-move miscellaneous'
     " performing the same search as before hitting ]v
     exe "normal /\<CR>"
     Expect line('.') == 7
-    Expect col('.') == 7
+    Expect col('.') == 11
   end
 
   it ']v does not change the current search string'
