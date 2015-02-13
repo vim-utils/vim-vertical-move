@@ -271,7 +271,9 @@ A list of code contributors:
 
 CHANGELOG						*vertical-move-changelog*
 
-	v2.0.0:	February 2, 2013	* Change default mappings to ]v and [v
+	v2.1.0:	February 13, 2015	* Improve string length calculation,
+					  various improvements
+	v2.0.0:	February 2, 2014	* Change default mappings to ]v and [v
 					  because 'leader mappings are lame'
 					  (http://lanyrd.com/2014/vimlondon/scwggw/)
 	v1.0.1:	December 21, 2013	* Always use 'norm!' - fixes bug with
