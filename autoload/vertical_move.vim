@@ -1,5 +1,5 @@
 function! s:line_length(line)
-  return len(getline(a:line))
+  return strdisplaywidth(getline(a:line))
 endfunction
 
 function! s:above_line_length()
@@ -62,7 +62,7 @@ function! vertical_move#Down(mode, count)
   let i = 0
   while i < a:count
     let i += 1
-    let cursor_column = col('.')
+    let cursor_column = virtcol('.')
     let total_lines   = line('$')
 
     " first line below is shorter than cursor column, 'bridge' the gap
@@ -87,7 +87,7 @@ function! vertical_move#Up(mode, count)
   let i = 0
   while i < a:count
     let i += 1
-    let cursor_column = col('.')
+    let cursor_column = virtcol('.')
 
     " first line above is shorter than cursor column, 'bridge' the gap
     if s:above_line_length() < cursor_column
