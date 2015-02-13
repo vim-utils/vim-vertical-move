@@ -1,3 +1,8 @@
+if exists('g:autoloaded_vertical_move') && g:autoloaded_vertical_move
+  finish
+endif
+let g:autoloaded_vertical_move = 1
+
 function! s:line_length(line)
   return strdisplaywidth(getline(a:line))
 endfunction
